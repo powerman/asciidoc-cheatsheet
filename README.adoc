@@ -7,17 +7,10 @@ Optional Author Name <optional@author.email>
 :toclevels: 1
 
 ----
-// This is a single-line comment, it won't be rendered.
+// Comments will be used to note differences from default Asciidoc behaviour,
+// some may be bugs, others may be specifics of GitHub or AsciiDoctor.
 
-////
-This is a multi-line block with comments.
-
-Comments will be used to note differences from default Asciidoc behaviour,
-some may be bugs, others may be specifics of GitHub or AsciiDoctor.
-
-Asciidoc syntax will be shown first, then how it will look on GitHub.
-Only exception is document title (which must comes first in document), which is:
-////
+// Below is header of this document:
 
 Asciidoc cheatsheet for GitHub
 ==============================
