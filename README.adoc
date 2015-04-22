@@ -48,8 +48,9 @@ toc::[]
 Author is "{author}" with email <{email}>,
 some attribute's value is {someattribute}.
 
-// Line with unknown attribute must be removed, but it's not.
-Line with unknown attribute like {nosuchattribute}.
+// Line with unknown attribute must be
+// removed, but it's not.
+Line with attribute like {nosuchattribute}.
 
 Escaped: \{author} and +++{author}+++
 ....
@@ -61,8 +62,9 @@ Escaped: \{author} and +++{author}+++
 Author is "{author}" with email <{email}>,
 some attribute's value is {someattribute}.
 
-// Line with unknown attribute must be removed, but it's not.
-Line with unknown attribute like {nosuchattribute}.
+// Line with unknown attribute must be
+// removed, but it's not.
+Line with attribute like {nosuchattribute}.
 
 Escaped: \{author} and +++{author}+++
 
@@ -77,15 +79,18 @@ Escaped: \{author} and +++{author}+++
 
 ....
 ////
-TIP: You can use attributes to setup auto-generated table of contents, for ex.:
+TIP: You can use attributes to setup
+     auto-generated table of contents, for ex.:
 :toc:
 :toclevels: 3
 
-Then put this line where you want to insert table of contents:
+Then put this line where you want to
+insert table of contents:
 toc::[]
 
-In GitHub Wiki table of contents looks worse than in file, especially
-multi-level one, because it include list bullets.
+In GitHub Wiki table of contents looks worse
+than in file, especially multi-level one,
+because it include list bullets.
 ////
 ....
 
@@ -94,15 +99,18 @@ multi-level one, because it include list bullets.
 ++++
 
 ////
-TIP: You can use attributes to setup auto-generated table of contents, for ex.:
+TIP: You can use attributes to setup
+     auto-generated table of contents, for ex.:
 :toc:
 :toclevels: 3
 
-Then put this line where you want to insert table of contents:
+Then put this line where you want to
+insert table of contents:
 toc::[]
 
-In GitHub Wiki table of contents looks worse than in file, especially
-multi-level one, because it include list bullets.
+In GitHub Wiki table of contents looks worse
+than in file, especially multi-level one,
+because it include list bullets.
 ////
 
 
@@ -128,16 +136,16 @@ multi-level one, because it include list bullets.
 ++++
 
 ....
-== Level 1 
+== Level 1
 Text.
 
-=== Level 2 
+=== Level 2
 Text.
 
-==== Level 3 
+==== Level 3
 Text.
 
-===== Level 4 
+===== Level 4
 Text.
 
 ....
@@ -146,16 +154,16 @@ Text.
 </td><td class=cheatsheet-render>
 ++++
 
-== Level 1 
+== Level 1
 Text.
 
-=== Level 2 
+=== Level 2
 Text.
 
-==== Level 3 
+==== Level 3
 Text.
 
-===== Level 4 
+===== Level 4
 Text.
 
 
@@ -176,11 +184,11 @@ Level 2
 ~~~~~~~
 Text.
 
-Level 3 
+Level 3
 ^^^^^^^
 Text.
 
-Level 4 
+Level 4
 +++++++
 Text.
 
@@ -198,11 +206,11 @@ Level 2
 ~~~~~~~
 Text.
 
-Level 3 
+Level 3
 ^^^^^^^
 Text.
 
-Level 4 
+Level 4
 +++++++
 Text.
 
@@ -229,7 +237,7 @@ Text.
 ++++
 
 ....
-// Paragraph title should be highlighted, but it is not.
+// Paragraph title is not highlighted.
 .Optional Title
 
 Usual
@@ -243,7 +251,7 @@ Second paragraph.
 </td><td class=cheatsheet-render>
 ++++
 
-// Paragraph title should be highlighted, but it is not.
+// Paragraph title is not highlighted.
 .Optional Title
 
 Usual
@@ -319,7 +327,8 @@ Not a code in next paragraph.
 ++++
 
 ....
-// Type of block (NOTE/TIP/…) should be shown as an icon, not as text.
+// Type of block (NOTE/TIP/…) should be
+// shown as an icon, not as text.
 .Optional Title
 NOTE: This is an example
       single-paragraph note.
@@ -330,6 +339,8 @@ NOTE: This is an example
 </td><td class=cheatsheet-render>
 ++++
 
+// Type of block (NOTE/TIP/…) should be
+// shown as an icon, not as text.
 .Optional Title
 NOTE: This is an example
       single-paragraph note.
@@ -577,13 +588,12 @@ Use: sidebar notes :)
 *Example* Block
 
 Use: examples :)
+==========================
 
+[caption="Custom: "]
+==========================
 Default caption "Example:"
-can be changed using
-
- [caption="Custom: "]
-
-before example block.
+can be changed.
 ==========================
 
 ....
@@ -598,15 +608,13 @@ before example block.
 *Example* Block
 
 Use: examples :)
-
-Default caption "Example:"
-can be changed using
-
- [caption="Custom: "]
-
-before example block.
 ==========================
 
+[caption="Custom: "]
+==========================
+Default caption "Example:"
+can be changed.
+==========================
 
 
 ++++
@@ -718,7 +726,7 @@ Use: backend-specific markup like
  .Optional Title
  ....
  *Literal* Block
- 
+
  Use: workaround when literal
  paragraph (indented) like
    1. First.
@@ -1103,7 +1111,7 @@ xref:anchor-2[Second anchor].
 ++++
 
 ....
-link:README[This document]
+link:README.adoc[This document]
 link:README.adoc[]
 link:/[This site root]
 
@@ -1113,7 +1121,7 @@ link:/[This site root]
 </td><td class=cheatsheet-render>
 ++++
 
-link:README[This document]
+link:README.adoc[This document]
 link:README.adoc[]
 link:/[This site root]
 
@@ -1200,10 +1208,9 @@ link="/images/font/640-screen2.gif"]
 ++++
 
 ....
+// Include is replaced with link.
 This is example how files
 can be included.
-It's commented because
-there are no such files.
 
 include::footer.txt[]
 
@@ -1218,10 +1225,9 @@ include::script.pl[]
 </td><td class=cheatsheet-render>
 ++++
 
+// Include is replaced with link.
 This is example how files
 can be included.
-It's commented because
-there are no such files.
 
 include::footer.txt[]
 
