@@ -583,6 +583,7 @@ Use: sidebar notes :)
 Use: examples :)
 ==========================
 
+// Example caption removed, not changed.
 [caption="Custom: "]
 ==========================
 Default caption "Example:"
@@ -603,6 +604,7 @@ can be changed.
 Use: examples :)
 ==========================
 
+// Example caption removed, not changed.
 [caption="Custom: "]
 ==========================
 Default caption "Example:"
@@ -686,7 +688,7 @@ Use: hide comments
 <p>
 Use: backend-specific markup like
 <table border="1">
-<tr><td>1<td>2
+<tr><td>1</td><td>2</td></tr>
 </table>
 ++++
 
@@ -701,7 +703,7 @@ Use: backend-specific markup like
 <p>
 Use: backend-specific markup like
 <table border="1">
-<tr><td>1<td>2
+<tr><td>1</td><td>2</td></tr>
 </table>
 ++++
 
@@ -1104,6 +1106,7 @@ xref:anchor-2[Second anchor].
 ++++
 
 ....
+// Link "root" is root of repo.
 link:README.adoc[This document]
 link:README.adoc[]
 link:/[This site root]
@@ -1114,6 +1117,7 @@ link:/[This site root]
 </td><td class=cheatsheet-render>
 ++++
 
+// Link "root" is root of repo.
 link:README.adoc[This document]
 link:README.adoc[]
 link:/[This site root]
@@ -1201,7 +1205,7 @@ link="/images/font/640-screen2.gif"]
 ++++
 
 ....
-// Include is replaced with link.
+// include\:\: is replaced with link:
 This is example how files
 can be included.
 
@@ -1218,7 +1222,7 @@ include::script.pl[]
 </td><td class=cheatsheet-render>
 ++++
 
-// Include is replaced with link.
+// include\:\: is replaced with link:
 This is example how files
 can be included.
 
