@@ -454,7 +454,7 @@ Use: GitHub-restricted subset of HTML markup
 ++++
 *Passthrough* Block
 <p>
-Use: GitHub-restricted subset of HTML markup
+Use: <a href="https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/sanitization_filter.rb">GitHub-restricted subset of HTML</a> markup
 <table border="1">
 <tr><td>1</td><td>2</td></tr>
 </table>
