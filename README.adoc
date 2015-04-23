@@ -18,6 +18,11 @@ cheatsheet should really looks like].
 GitHub Wiki has own limitations, check
 https://github.com/powerman/asciidoc-cheatsheet/wiki[this cheatsheet in wiki].
 
+You can try these browser add-ons to fix some issues:
+
+- https://github.com/powerman/userjs-github-asciidoc[UserJS for GitHub: fix Asciidoc rendering]
+- https://userstyles.org/styles/113008/github-compact-markdown-asciidoc-lists[UserCSS for GitHub: compact Markdown/Asciidoc lists]
+
 
 == Attributes
 
