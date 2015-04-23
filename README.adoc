@@ -659,7 +659,7 @@ t\__e__st, +++t__e__st+++,
 ++++
 
 
-== Macros: links, images & include
+== Macros: links, images
 
 ++++
 <table class=cheatsheet>
