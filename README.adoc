@@ -378,6 +378,36 @@ Use: multi-paragraph notes.
 ++++
 
 ....
+.Optional Title
+[quote, cite author, cite source]
+____
+*Quote* Block
+
+Use: cite somebody
+____
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+.Optional Title
+[quote, cite author, cite source]
+____
+*Quote* Block
+
+Use: cite somebody
+____
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
 ////
 *Comment* block
 
@@ -462,36 +492,6 @@ paragraph (indented) like
   2. Second.
 incorrectly processed as list.
 ....
-
-++++
-</td></tr><tr><td></td><td></td></tr>
-++++
-
-++++
-<tr><td class=cheatsheet-source>
-++++
-
-....
-.Optional Title
-[quote, cite author, cite source]
-____
-*Quote* Block
-
-Use: cite somebody
-____
-....
-
-++++
-</td><td class=cheatsheet-render>
-++++
-
-.Optional Title
-[quote, cite author, cite source]
-____
-*Quote* Block
-
-Use: cite somebody
-____
 
 ++++
 </td></tr>
