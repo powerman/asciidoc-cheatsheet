@@ -703,8 +703,7 @@ xref:anchor-1[First anchor].
 
 ....
 link:README.adoc[This document]
-link:README.adoc[]
-link:/[This repo root]
+link:/README.adoc[]
 ....
 
 ++++
@@ -712,8 +711,7 @@ link:/[This repo root]
 ++++
 
 link:README.adoc[This document]
-link:README.adoc[]
-link:/[This repo root]
+link:/README.adoc[]
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
