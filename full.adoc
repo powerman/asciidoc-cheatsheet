@@ -1,37 +1,69 @@
 Asciidoc cheatsheet for GitHub
 ==============================
+Optional Author Name <optional@author.email>
+:Revision: 1.0
+:Some attribute: Some value
 :toc:
 :toclevels: 1
-:Some attr: Some value
-
-toc::[]
-
-
-== GitHub limitations
-
-This cheatsheet contains small part of Asciidoc markup which works and
-looks fine on GitHub. There is also link:full.adoc[full cheatsheet], but
-for now it's main use is to show bugs, design issues, GitHub limitations
-and other differences from http://powerman.name/doc/asciidoc[how Asciidoc
-cheatsheet should really looks like].
-
-
-== Attributes
 
 ----
-// Header of this document:
+// Comments will be used to note differences from default Asciidoc behaviour,
+// some may be bugs, others may be specifics of GitHub or AsciiDoctor.
+
+// Below is header of this document:
 
 Asciidoc cheatsheet for GitHub
 ==============================
+Optional Author Name <optional@author.email>
+:Revision: 1.0
+:Some attribute: Some value
 :toc:
 :toclevels: 1
-:Some attr: Some value
+
+// Both author name/email, and even :Revision: attribute should be rendered
+// under document title, but they're not.
+----
 
 toc::[]
-----
+
+== Attributes
 
 ++++
 <table class=cheatsheet>
+++++
+
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+Author is "{author}" with email <{email}>,
+some attribute's value is {someattribute}.
+
+// Line with unknown attribute must be
+// removed, but it's not.
+Line with attribute like {nosuchattribute}.
+
+Escaped: \{author} and +++{author}+++
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+Author is "{author}" with email <{email}>,
+some attribute's value is {someattribute}.
+
+// Line with unknown attribute must be
+// removed, but it's not.
+Line with attribute like {nosuchattribute}.
+
+Escaped: \{author} and +++{author}+++
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
 ++++
 
 ++++
@@ -39,25 +71,51 @@ toc::[]
 ++++
 
 ....
-Some attr's value is {someattr}.
-Escaped: \{someattr} and +++{someattr}+++.
+////
+TIP: You can use attributes to setup
+     auto-generated table of contents, for ex.:
+:toc:
+:toclevels: 3
+
+Then put this line where you want to
+insert table of contents:
+toc::[]
+
+In GitHub Wiki table of contents looks worse
+than in file, especially multi-level one,
+because it include list bullets.
+////
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
-Some attr's value is {someattr}.
-Escaped: \{someattr} and +++{someattr}+++.
+////
+TIP: You can use attributes to setup
+     auto-generated table of contents, for ex.:
+:toc:
+:toclevels: 3
+
+Then put this line where you want to
+insert table of contents:
+toc::[]
+
+In GitHub Wiki table of contents looks worse
+than in file, especially multi-level one,
+because it include list bullets.
+////
+
+
 
 ++++
 </td></tr>
 ++++
 
+
 ++++
 </table>
 ++++
-
 
 == Headers
 
@@ -65,6 +123,7 @@ Escaped: \{someattr} and +++{someattr}+++.
 <table class=cheatsheet>
 ++++
 
+
 ++++
 <tr><td class=cheatsheet-source>
 ++++
@@ -100,14 +159,64 @@ Text.
 ===== Level 4
 Text.
 
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+Level 1
+-------
+Text.
+
+Level 2
+~~~~~~~
+Text.
+
+Level 3
+^^^^^^^
+Text.
+
+Level 4
++++++++
+Text.
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+Level 1
+-------
+Text.
+
+Level 2
+~~~~~~~
+Text.
+
+Level 3
+^^^^^^^
+Text.
+
+Level 4
++++++++
+Text.
+
+
+
 ++++
 </td></tr>
 ++++
 
+
 ++++
 </table>
 ++++
-
 
 == Paragraphs
 
@@ -115,27 +224,34 @@ Text.
 <table class=cheatsheet>
 ++++
 
+
 ++++
 <tr><td class=cheatsheet-source>
 ++++
 
 ....
+// Paragraph title is not highlighted.
 .Optional Title
+
 Usual
 paragraph.
 
 Second paragraph.
+
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
+// Paragraph title is not highlighted.
 .Optional Title
+
 Usual
 paragraph.
 
 Second paragraph.
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -162,31 +278,7 @@ Second paragraph.
  Literal paragraph.
   Must be indented.
 
-++++
-</td></tr><tr><td></td><td></td></tr>
-++++
 
-++++
-<tr><td class=cheatsheet-source>
-++++
-
-....
-.Optional Title
-[source,perl]
-die 'connect: '.$dbh->errstr;
-
-Not a code in next paragraph.
-....
-
-++++
-</td><td class=cheatsheet-render>
-++++
-
-.Optional Title
-[source,perl]
-die 'connect: '.$dbh->errstr;
-
-Not a code in next paragraph.
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -198,8 +290,12 @@ Not a code in next paragraph.
 
 ....
 .Optional Title
-NOTE: This is an example
-      single-paragraph note.
+
+[source,perl]
+die 'connect: '.$dbh->errstr;
+
+Not a code in next paragraph.
+
 ....
 
 ++++
@@ -207,8 +303,42 @@ NOTE: This is an example
 ++++
 
 .Optional Title
+
+[source,perl]
+die 'connect: '.$dbh->errstr;
+
+Not a code in next paragraph.
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+// Type of block (NOTE/TIP/…) should be
+// shown as an icon, not as text.
+.Optional Title
 NOTE: This is an example
       single-paragraph note.
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+// Type of block (NOTE/TIP/…) should be
+// shown as an icon, not as text.
+.Optional Title
+NOTE: This is an example
+      single-paragraph note.
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -223,6 +353,7 @@ NOTE: This is an example
 [NOTE]
 This is an example
 single-paragraph note.
+
 ....
 
 ++++
@@ -233,6 +364,8 @@ single-paragraph note.
 [NOTE]
 This is an example
 single-paragraph note.
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -245,11 +378,6 @@ single-paragraph note.
 ....
 TIP: Some tip text.
 
-IMPORTANT: Some important text.
-
-WARNING: Some warning text.
-
-CAUTION: Some caution text.
 ....
 
 ++++
@@ -258,20 +386,79 @@ CAUTION: Some caution text.
 
 TIP: Some tip text.
 
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
 IMPORTANT: Some important text.
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+IMPORTANT: Some important text.
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+WARNING: Some warning text.
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
 
 WARNING: Some warning text.
 
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
 CAUTION: Some caution text.
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+CAUTION: Some caution text.
+
+
 
 ++++
 </td></tr>
 ++++
 
+
 ++++
 </table>
 ++++
-
 
 == Blocks
 
@@ -279,6 +466,7 @@ CAUTION: Some caution text.
 <table class=cheatsheet>
 ++++
 
+
 ++++
 <tr><td class=cheatsheet-source>
 ++++
@@ -290,6 +478,7 @@ CAUTION: Some caution text.
 
 Use: code or file listings
 ----
+
 ....
 
 ++++
@@ -302,6 +491,8 @@ Use: code or file listings
 
 Use: code or file listings
 ----
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -317,11 +508,12 @@ Use: code or file listings
 ----
 # *Source* block
 # Use: highlight code listings
+# (require `source-highlight` or `pygmentize`)
 use DBI;
-
 my $dbh = DBI->connect('...',$u,$p)
     or die "connect: $dbh->errstr";
 ----
+
 ....
 
 ++++
@@ -333,12 +525,93 @@ my $dbh = DBI->connect('...',$u,$p)
 ----
 # *Source* block
 # Use: highlight code listings
+# (require `source-highlight` or `pygmentize`)
 use DBI;
-
 my $dbh = DBI->connect('...',$u,$p)
     or die "connect: $dbh->errstr";
 ----
 
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+// Sidebar block isn't highlighted.
+.Optional Title
+****
+*Sidebar* Block
+
+Use: sidebar notes :)
+****
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+// Sidebar block isn't highlighted.
+.Optional Title
+****
+*Sidebar* Block
+
+Use: sidebar notes :)
+****
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+// Example block isn't highlighted.
+.Optional Title
+==========================
+*Example* Block
+
+Use: examples :)
+==========================
+
+// Example caption removed, not changed.
+[caption="Custom: "]
+==========================
+Default caption "Example:"
+can be changed.
+==========================
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+// Example block isn't highlighted.
+.Optional Title
+==========================
+*Example* Block
+
+Use: examples :)
+==========================
+
+// Example caption removed, not changed.
+[caption="Custom: "]
+==========================
+Default caption "Example:"
+can be changed.
+==========================
+
+
 ++++
 </td></tr><tr><td></td><td></td></tr>
 ++++
@@ -350,11 +623,12 @@ my $dbh = DBI->connect('...',$u,$p)
 ....
 .Optional Title
 [NOTE]
-====
+===============================
 *NOTE* Block
 
 Use: multi-paragraph notes.
-====
+===============================
+
 ....
 
 ++++
@@ -363,11 +637,13 @@ Use: multi-paragraph notes.
 
 .Optional Title
 [NOTE]
-====
+===============================
 *NOTE* Block
 
 Use: multi-paragraph notes.
-====
+===============================
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -383,6 +659,7 @@ Use: multi-paragraph notes.
 
 Use: hide comments
 ////
+
 ....
 
 ++++
@@ -394,6 +671,8 @@ Use: hide comments
 
 Use: hide comments
 ////
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -407,11 +686,12 @@ Use: hide comments
 ++++
 *Passthrough* Block
 <p>
-Use: GitHub-restricted subset of HTML markup
+Use: backend-specific markup like
 <table border="1">
 <tr><td>1</td><td>2</td></tr>
 </table>
 ++++
+
 ....
 
 ++++
@@ -421,11 +701,13 @@ Use: GitHub-restricted subset of HTML markup
 ++++
 *Passthrough* Block
 <p>
-Use: GitHub-restricted subset of HTML markup
+Use: backend-specific markup like
 <table border="1">
 <tr><td>1</td><td>2</td></tr>
 </table>
 ++++
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -446,6 +728,7 @@ Use: GitHub-restricted subset of HTML markup
    2. Second.
  incorrectly processed as list.
  ....
+
 ....
 
 ++++
@@ -453,6 +736,7 @@ Use: GitHub-restricted subset of HTML markup
 ++++
 
 .Optional Title
+
 ....
 *Literal* Block
 
@@ -479,6 +763,7 @@ ____
 
 Use: cite somebody
 ____
+
 ....
 
 ++++
@@ -493,14 +778,17 @@ ____
 Use: cite somebody
 ____
 
+
+
+
 ++++
 </td></tr>
 ++++
 
+
 ++++
 </table>
 ++++
-
 
 == Text
 
@@ -508,6 +796,8 @@ ____
 <table class=cheatsheet>
 ++++
 
+
+
 ++++
 <tr><td class=cheatsheet-source>
 ++++
@@ -515,6 +805,7 @@ ____
 ....
 forced +
 line break
+
 ....
 
 ++++
@@ -523,6 +814,8 @@ line break
 
 forced +
 line break
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -533,26 +826,25 @@ line break
 ++++
 
 ....
-normal, 'italic', _italic_, *bold*.
-
-+mono *bold*+, `mono pass thru *bold*`
+normal, _italic_, *bold*, +mono+.
 
 ``double quoted'', `single quoted'.
 
 normal, ^super^, ~sub~.
+
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
-normal, 'italic', _italic_, *bold*.
-
-+mono *bold*+, `mono pass thru *bold*`
+normal, _italic_, *bold*, +mono+.
 
 ``double quoted'', `single quoted'.
 
 normal, ^super^, ~sub~.
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -563,14 +855,92 @@ normal, ^super^, ~sub~.
 ++++
 
 ....
-Chars: n__i__**b**++m++n
+Command: `ls -al`
+
++mono *bold*+
+
+`passthru *bold*`
+
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
-Chars: n__i__**b**++m++n
+Command: `ls -al`
+
++mono *bold*+
+
+`passthru *bold*`
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+Path: '/some/filez.txt', '.b'
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+Path: '/some/filez.txt', '.b'
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+// Colors and font size doesn't change.
+[red]#red text# [yellow-background]#on yellow#
+[big]#large# [red yellow-background big]*all bold*
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+// Colors and font size doesn't change.
+[red]#red text# [yellow-background]#on yellow#
+[big]#large# [red yellow-background big]*all bold*
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+Chars: n__i__**b**++m++[red]##r##
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+Chars: n__i__**b**++m++[red]##r##
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -582,6 +952,7 @@ Chars: n__i__**b**++m++n
 
 ....
 // Comment
+
 ....
 
 ++++
@@ -590,6 +961,8 @@ Chars: n__i__**b**++m++n
 
 // Comment
 
+
+
 ++++
 </td></tr><tr><td></td><td></td></tr>
 ++++
@@ -600,6 +973,7 @@ Chars: n__i__**b**++m++n
 
 ....
 (C) (R) (TM) -- ... -> <- => <= &#182;
+
 ....
 
 ++++
@@ -607,6 +981,8 @@ Chars: n__i__**b**++m++n
 ++++
 
 (C) (R) (TM) -- ... -> <- => <= &#182;
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -618,6 +994,7 @@ Chars: n__i__**b**++m++n
 
 ....
 ''''
+
 ....
 
 ++++
@@ -625,6 +1002,8 @@ Chars: n__i__**b**++m++n
 ++++
 
 ''''
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -635,29 +1014,41 @@ Chars: n__i__**b**++m++n
 ++++
 
 ....
+// Differs from Asciidoc, but it's hard to say who's correct.
 Escaped:
 \_italic_, +++_italic_+++,
 t\__e__st, +++t__e__st+++,
++++<b>bold</b>+++, $$<b>normal</b>$$
 \&#182;
+\`not single quoted'
+\`\`not double quoted''
+
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
+// Differs from Asciidoc, but it's hard to say who's correct.
 Escaped:
 \_italic_, +++_italic_+++,
 t\__e__st, +++t__e__st+++,
++++<b>bold</b>+++, $$<b>normal</b>$$
 \&#182;
+\`not single quoted'
+\`\`not double quoted''
+
+
+
 
 ++++
 </td></tr>
 ++++
 
+
 ++++
 </table>
 ++++
-
 
 == Macros: links, images & include
 
@@ -665,8 +1056,10 @@ t\__e__st, +++t__e__st+++,
 <table class=cheatsheet>
 ++++
 
+
 If you'll need to use space in url/path you should replace it with %20.
 
+
 ++++
 <tr><td class=cheatsheet-source>
 ++++
@@ -675,10 +1068,15 @@ If you'll need to use space in url/path you should replace it with %20.
 [[anchor-1]]
 Paragraph or block 1.
 
+// This type of anchor doesn't work
+anchor:anchor-2[]
+Paragraph or block 2.
+
 <<anchor-1>>,
 <<anchor-1,First anchor>>,
-xref:anchor-1[],
-xref:anchor-1[First anchor].
+xref:anchor-2[],
+xref:anchor-2[Second anchor].
+
 ....
 
 ++++
@@ -688,10 +1086,16 @@ xref:anchor-1[First anchor].
 [[anchor-1]]
 Paragraph or block 1.
 
+// This type of anchor doesn't work
+anchor:anchor-2[]
+Paragraph or block 2.
+
 <<anchor-1>>,
 <<anchor-1,First anchor>>,
-xref:anchor-1[],
-xref:anchor-1[First anchor].
+xref:anchor-2[],
+xref:anchor-2[Second anchor].
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -702,18 +1106,23 @@ xref:anchor-1[First anchor].
 ++++
 
 ....
+// Link "root" is root of repo.
 link:README.adoc[This document]
 link:README.adoc[]
-link:/[This repo root]
+link:/[This site root]
+
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
+// Link "root" is root of repo.
 link:README.adoc[This document]
 link:README.adoc[]
-link:/[This repo root]
+link:/[This site root]
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -727,6 +1136,7 @@ link:/[This repo root]
 http://google.com
 http://google.com[Google Search]
 mailto:root@localhost[email admin]
+
 ....
 
 ++++
@@ -736,6 +1146,8 @@ mailto:root@localhost[email admin]
 http://google.com
 http://google.com[Google Search]
 mailto:root@localhost[email admin]
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -760,6 +1172,7 @@ image::images/icons/home.png[Alt text]
 image:/images/font/640-screen2.gif[
 "My screenshot",width=128,
 link="/images/font/640-screen2.gif"]
+
 ....
 
 ++++
@@ -780,15 +1193,57 @@ image::images/icons/home.png[Alt text]
 image:/images/font/640-screen2.gif[
 "My screenshot",width=128,
 link="/images/font/640-screen2.gif"]
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+// include\:\: is replaced with link:
+This is example how files
+can be included.
+
+include::footer.txt[]
+
+[source,perl]
+----
+include::script.pl[]
+----
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+// include\:\: is replaced with link:
+This is example how files
+can be included.
+
+include::footer.txt[]
+
+[source,perl]
+----
+include::script.pl[]
+----
+
+
+
 
 ++++
 </td></tr>
 ++++
 
+
 ++++
 </table>
 ++++
-
 
 == Lists
 
@@ -796,6 +1251,8 @@ link="/images/font/640-screen2.gif"]
 <table class=cheatsheet>
 ++++
 
+
+
 ++++
 <tr><td class=cheatsheet-source>
 ++++
@@ -819,6 +1276,7 @@ link="/images/font/640-screen2.gif"]
 *** bullet
 ** bullet
 * bullet
+
 ....
 
 ++++
@@ -844,6 +1302,8 @@ link="/images/font/640-screen2.gif"]
 ** bullet
 * bullet
 
+
+
 ++++
 </td></tr><tr><td></td><td></td></tr>
 ++++
@@ -856,8 +1316,7 @@ link="/images/font/640-screen2.gif"]
 .Bulleted 2
 - bullet
   * bullet
-  ** bullet
-     *** bullet
+
 ....
 
 ++++
@@ -867,8 +1326,8 @@ link="/images/font/640-screen2.gif"]
 .Bulleted 2
 - bullet
   * bullet
-  ** bullet
-     *** bullet
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -879,48 +1338,52 @@ link="/images/font/640-screen2.gif"]
 ++++
 
 ....
+// Markers differs from Asciidoc.
 .Ordered
 . number
 . number
-  .. lower roman
-  .. lower roman
+  .. letter
+  .. letter
 . number
-.. lower roman
-.. lower roman
-... lower alpha
-... lower alpha
-.... lower alpha
-.... lower alpha
-..... lower alpha
-..... lower alpha
-.... lower alpha
-... lower alpha
-.. lower roman
+.. loweralpha
+.. loweralpha
+... lowerroman
+... lowerroman
+.... upperalpha
+.... upperalpha
+..... upperroman
+..... upperroman
+.... upperalpha
+... lowerroman
+.. loweralpha
 . number
+
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
+// Markers differs from Asciidoc.
 .Ordered
 . number
 . number
-  .. lower roman
-  .. lower roman
+  .. letter
+  .. letter
 . number
-.. lower roman
-.. lower roman
-... lower alpha
-... lower alpha
-.... lower alpha
-.... lower alpha
-..... lower alpha
-..... lower alpha
-.... lower alpha
-... lower alpha
-.. lower roman
+.. loweralpha
+.. loweralpha
+... lowerroman
+... lowerroman
+.... upperalpha
+.... upperalpha
+..... upperroman
+..... upperroman
+.... upperalpha
+... lowerroman
+.. loweralpha
 . number
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -934,17 +1397,18 @@ link="/images/font/640-screen2.gif"]
 .Ordered 2
 a. letter
 b. letter
-   .. lower roman
-   .. lower roman
-       .  lower alpha
-       .  lower alpha
-           1. lower alpha
-           2. lower alpha
-           3. lower alpha
-           4. lower alpha
-       .  lower alpha
-   .. lower roman
+   .. letter2
+   .. letter2
+       .  number
+       .  number
+           1. number2
+           2. number2
+           3. number2
+           4. number2
+       .  number
+   .. letter2
 c. letter
+
 ....
 
 ++++
@@ -954,17 +1418,19 @@ c. letter
 .Ordered 2
 a. letter
 b. letter
-   .. lower roman
-   .. lower roman
-       .  lower alpha
-       .  lower alpha
-           1. lower alpha
-           2. lower alpha
-           3. lower alpha
-           4. lower alpha
-       .  lower alpha
-   .. lower roman
+   .. letter2
+   .. letter2
+       .  number
+       .  number
+           1. number2
+           2. number2
+           3. number2
+           4. number2
+       .  number
+   .. letter2
 c. letter
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -993,6 +1459,7 @@ Term 4.2.1:::: Definition 4.2.1
 Term 4.2.2:::: Definition 4.2.2
 Term 4.3::: Definition 4.3
 Term 5:: Definition 5
+
 ....
 
 ++++
@@ -1018,6 +1485,8 @@ Term 4.2.2:::: Definition 4.2.2
 Term 4.3::: Definition 4.3
 Term 5:: Definition 5
 
+
+
 ++++
 </td></tr><tr><td></td><td></td></tr>
 ++++
@@ -1032,6 +1501,7 @@ Term 1;;
     Definition 1
     Term 1.1::
         Definition 1.1
+
 ....
 
 ++++
@@ -1044,6 +1514,8 @@ Term 1;;
     Term 1.1::
         Definition 1.1
 
+
+
 ++++
 </td></tr><tr><td></td><td></td></tr>
 ++++
@@ -1053,30 +1525,57 @@ Term 1;;
 ++++
 
 ....
+// Horizontal lists looks wrong.
 [horizontal]
 .Labeled horizontal
 Term 1:: Definition 1
 Term 2:: Definition 2
-
+[horizontal]
+    Term 2.1;;
+        Definition 2.1
+    Term 2.2;;
+        Definition 2.2
 Term 3::
     Definition 3
-
 Term 4:: Definition 4
+[horizontal]
+Term 4.1::: Definition 4.1
+Term 4.2::: Definition 4.2
+[horizontal]
+Term 4.2.1:::: Definition 4.2.1
+Term 4.2.2:::: Definition 4.2.2
+Term 4.3::: Definition 4.3
+Term 5:: Definition 5
+
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
+// Horizontal lists looks wrong.
 [horizontal]
 .Labeled horizontal
 Term 1:: Definition 1
 Term 2:: Definition 2
-
+[horizontal]
+    Term 2.1;;
+        Definition 2.1
+    Term 2.2;;
+        Definition 2.2
 Term 3::
     Definition 3
-
 Term 4:: Definition 4
+[horizontal]
+Term 4.1::: Definition 4.1
+Term 4.2::: Definition 4.2
+[horizontal]
+Term 4.2.1:::: Definition 4.2.1
+Term 4.2.2:::: Definition 4.2.2
+Term 4.3::: Definition 4.3
+Term 5:: Definition 5
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -1092,6 +1591,7 @@ Term 4:: Definition 4
 Question 1::
     Answer 1
 Question 2:: Answer 2
+
 ....
 
 ++++
@@ -1103,6 +1603,52 @@ Question 2:: Answer 2
 Question 1::
     Answer 1
 Question 2:: Answer 2
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+// Bug: (B) should be same level as (A)
+.Indent is optional
+- bullet
+    * another bullet
+        1. number
+        .  again number (A)
+            a. letter
+            .. again letter
+
+.. letter
+. number (B)
+
+* bullet
+- bullet
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+// Bug: (B) should be same level as (A)
+.Indent is optional
+- bullet
+    * another bullet
+        1. number
+        .  again number (A)
+            a. letter
+            .. again letter
+
+.. letter
+. number (B)
+
+* bullet
+- bullet
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -1130,8 +1676,11 @@ Independent paragraph break list.
 . number
 --
 
+--
 . number
 . number
+--
+
 ....
 
 ++++
@@ -1155,8 +1704,12 @@ Independent paragraph break list.
 . number
 --
 
+--
 . number
 . number
+--
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -1187,6 +1740,7 @@ included in list
 ----
 +
 Last continuation.
+
 ....
 
 ++++
@@ -1213,6 +1767,8 @@ included in list
 ----
 +
 Last continuation.
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -1242,6 +1798,8 @@ Last continuation.
 --
     .. letter
   . number
+
+
 ....
 
 ++++
@@ -1267,15 +1825,19 @@ Last continuation.
 --
     .. letter
   . number
+
+
+
+
 
 ++++
 </td></tr>
 ++++
 
+
 ++++
 </table>
 ++++
-
 
 == Tables
 
@@ -1283,26 +1845,16 @@ Last continuation.
 <table class=cheatsheet>
 ++++
 
+
+You can fill table from CSV file using +include::+ macros inside table.
+
+
 ++++
 <tr><td class=cheatsheet-source>
 ++++
 
 ....
-.An example table
-[options="header,footer"]
-|=======================
-|Col 1|Col 2      |Col 3
-|1    |Item 1     |a
-|2    |Item 2     |b
-|3    |Item 3     |c
-|6    |Three items|d
-|=======================
-....
-
-++++
-</td><td class=cheatsheet-render>
-++++
-
+// Table footer doesn't highlighted.
 .An example table
 [options="header,footer"]
 |=======================
@@ -1313,35 +1865,24 @@ Last continuation.
 |6    |Three items|d
 |=======================
 
-++++
-</td></tr><tr><td></td><td></td></tr>
-++++
-
-++++
-<tr><td class=cheatsheet-source>
-++++
-
-....
-.CSV data
-[format="csv",cols="4"]
-|======
-1,2,3,4
-a,b,c,d
-A,B,C,D
-|======
 ....
 
 ++++
 </td><td class=cheatsheet-render>
 ++++
 
-.CSV data
-[format="csv",cols="4"]
-|======
-1,2,3,4
-a,b,c,d
-A,B,C,D
-|======
+// Table footer doesn't highlighted.
+.An example table
+[options="header,footer"]
+|=======================
+|Col 1|Col 2      |Col 3
+|1    |Item 1     |a
+|2    |Item 2     |b
+|3    |Item 3     |c
+|6    |Three items|d
+|=======================
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -1352,13 +1893,54 @@ A,B,C,D
 ++++
 
 ....
-[format="csv"]
-[options="header",cols=",,s,,m"]
+// Table width, frame and grid control doesn't work.
+.CSV data, 15% each column
+[format="csv",width="60%",cols="4"]
+[frame="topbot",grid="none"]
+|======
+1,2,3,4
+a,b,c,d
+A,B,C,D
+|======
+
+
+....
+
+++++
+</td><td class=cheatsheet-render>
+++++
+
+// Table width, frame and grid control doesn't work.
+.CSV data, 15% each column
+[format="csv",width="60%",cols="4"]
+[frame="topbot",grid="none"]
+|======
+1,2,3,4
+a,b,c,d
+A,B,C,D
+|======
+
+
+
+
+++++
+</td></tr><tr><td></td><td></td></tr>
+++++
+
+++++
+<tr><td class=cheatsheet-source>
+++++
+
+....
+// Table column align doesn't work.
+[grid="rows",format="csv"]
+[options="header",cols="^,<,<s,<,>m"]
 |===========================
 ID,FName,LName,Address,Phone
 1,Vasya,Pupkin,London,+123
 2,X,Y,"A,B",45678
 |===========================
+
 ....
 
 ++++
@@ -1366,13 +1948,15 @@ ID,FName,LName,Address,Phone
 ++++
 
 // Table column align doesn't work.
-[format="csv"]
-[options="header",cols=",,s,,m"]
+[grid="rows",format="csv"]
+[options="header",cols="^,<,<s,<,>m"]
 |===========================
 ID,FName,LName,Address,Phone
 1,Vasya,Pupkin,London,+123
 2,X,Y,"A,B",45678
 |===========================
+
+
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -1398,6 +1982,7 @@ Back-to-back with previous interval.
 |24-Aug-08 3+^|none
 
 |====
+
 ....
 
 ++++
@@ -1420,9 +2005,12 @@ Back-to-back with previous interval.
 
 |====
 
+
+
 ++++
 </td></tr>
 ++++
+
 
 ++++
 </table>
