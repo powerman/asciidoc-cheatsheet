@@ -930,8 +930,8 @@ link="/images/font/640-screen2.gif"]
 
 ....
 .Ordered 2
-a. letter
-b. letter
+a. lower alpha
+b. lower alpha
    .. lower roman
    .. lower roman
        .  lower alpha
@@ -942,7 +942,7 @@ b. letter
            4. lower alpha
        .  lower alpha
    .. lower roman
-c. letter
+c. lower alpha
 ....
 
 ++++
@@ -950,8 +950,8 @@ c. letter
 ++++
 
 .Ordered 2
-a. letter
-b. letter
+a. lower alpha
+b. lower alpha
    .. lower roman
    .. lower roman
        .  lower alpha
@@ -962,7 +962,7 @@ b. letter
            4. lower alpha
        .  lower alpha
    .. lower roman
-c. letter
+c. lower alpha
 
 ++++
 </td></tr><tr><td></td><td></td></tr>
@@ -1232,13 +1232,13 @@ Last continuation.
   * bullet
 - bullet
   . number
-    .. letter
+    .. lower alpha
 +
 --
       . number
-        .. letter
+        .. lower alpha
 --
-    .. letter
+    .. lower alpha
   . number
 ....
 
@@ -1257,13 +1257,13 @@ Last continuation.
   * bullet
 - bullet
   . number
-    .. letter
+    .. lower alpha
 +
 --
       . number
-        .. letter
+        .. lower alpha
 --
-    .. letter
+    .. lower alpha
   . number
 
 ++++
