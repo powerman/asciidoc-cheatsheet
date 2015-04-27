@@ -17,6 +17,8 @@ cheatsheet should really looks like].
 
 GitHub Wiki has own limitations, check
 https://github.com/powerman/asciidoc-cheatsheet/wiki[this cheatsheet in wiki].
+GitHub Gist has own limitations, check
+https://gist.github.com/powerman/d56b2675dfed38deb298[this cheatsheet in gist].
 
 You can try these browser add-ons to fix some issues:
 
