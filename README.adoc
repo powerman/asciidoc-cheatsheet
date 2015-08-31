@@ -1,11 +1,12 @@
 Asciidoc cheatsheet for GitHub
 ==============================
 :toc:
+:toc-placement: preamble
 :toclevels: 1
 :Some attr: Some value
 
-toc::[]
-
+// Need some preamble to get TOC:
+{empty}
 
 == GitHub limitations
 
@@ -34,10 +35,12 @@ You can try these browser add-ons to fix some issues:
 Asciidoc cheatsheet for GitHub
 ==============================
 :toc:
+:toc-placement: preamble
 :toclevels: 1
 :Some attr: Some value
 
-toc::[]
+// Need some preamble to get TOC:
+{empty}
 ----
 
 ++++
