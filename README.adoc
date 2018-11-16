@@ -72,7 +72,7 @@ Escaped: \{someattr} and +++{someattr}+++.
 ++++
 
 
-== Headers
+== Section titles
 
 ++++
 <table class=cheatsheet>
